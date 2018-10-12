@@ -5,38 +5,102 @@
 
 <!-- Optional: on every page: header and footer -->
 <header>
-  Hi, I'm a header
+  AutoMoDe-gianduja
 </header>
 
-<footer>by John Doe</footer>
+<footer>Ken Hasselmann, Frédéric Robert, and Mauro Birattari</footer>
 
 <!-- Your Slides -->
 <!-- One section is one slide -->
 
 <section>
     <!-- This is the first slide -->
-    <h1>My Presentation</h1>
-    <footer>by John Doe</footer>
+    <h1>AutoMoDe-gianduja</h1>
+    <h2>Automatic Design of Communication-based Behaviors for Robot Swarms</h2>
+    <footer>Ken Hasselmann, Frédéric Robert, and Mauro Birattari</footer>
 </section>
 
 <section>
-    <p>Some random text: But I've never been to the moon! You can see how I lived before I met you. Also Zoidberg.
-    I could if you hadn't turned on the light and shut off my stereo.</p>
-</section>
-
-<section>
-    <h3>An incremental list</h3>
+    <h3 class="title">Robot swarms</h3>
     <ul>
-      <li class="next">Item 1
-      <li class="next">Item 2
-      <li class="next">Item 3
-        <ul>
-          <li class="next"> Item 3.1
-          <li class="next"> Item 3.2
-        </ul>
+      <li class="next">Large number of robots cooperating
+      <li class="next">Self-organized
+      <li class="next">Decentralized
     </ul>
+    <h3 class="next">In order to achieve</h3>
+    <ul>
+        <li class="next"> Robustness
+        <li class="next"> Scalability
+    </ul>
+
     <div role="note">Some notes. They are only visible using onstage shell.</div>
 </section>
+
+<section>
+    <h3 class="title">Design Methods</h3>
+
+      <h3>Manual design</h3>
+    <ul>
+      <li>
+    Design done by hand by an expert.
+      </li>
+  </ul>
+
+      <h3>Automatic design</h3>
+        <ul>
+
+      <li>
+        Design automatically done by an optimization algorithm
+      </li>
+    </ul>
+
+    <div role="note">Some notes. They are only visible using onstage shell.</div>
+</section>
+
+
+<section>
+
+    <h3 class="title">Automatic Design</h3>
+    <div >
+      <ul>
+        <li>
+          Evolutionnary methods
+        </li>
+        <li>
+          Modular methods
+        </li>
+      </ul>
+    </div>
+
+    <div role="note">Some notes. They are only visible using onstage shell.</div>
+</section>
+
+
+<section>
+
+        <h3>
+          AutoMoDe: Automatic Modular Design
+      </h3>
+
+        <ul>
+            <li>Control achitecture : <i>Probabilistic Finite State Machine</i></li>
+            <li>Optimization algorithm : <i>irace</i></li>
+        </ul>
+      <!-- end .column-->
+      <div class="topandleft">
+          <img src="static/images/automodeschema.png" width="500" class="centeredimg" alt="AutoMoDe" >
+      </div>
+
+
+
+      <!-- end figure-->
+
+
+    <div role="note">Some notes. They are only visible using onstage shell.</div>
+</section>
+
+
+
 
 <section>
     <h3>More incrementals</h3>
@@ -63,11 +127,13 @@
   <blockquote>
     Who's brave enough to fly into something we all keep calling a death sphere?
   </blockquote>
+  <div role="note">
   <details>
     <p>In the onstage shell, notes scroll rather than overflow:</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac dui eu est feugiat lacinia sit amet nec leo. Mauris eu ipsum leo. Nulla mi odio, cursus sed sollicitudin non, fringilla id magna. Suspendisse sit amet posuere elit. Maecenas iaculis, turpis a placerat imperdiet, libero lorem feugiat nisi, nec tincidunt diam nibh sit amet massa. Vestibulum quis adipiscing tellus. Maecenas sollicitudin sodales pulvinar. Donec dui ipsum, bibendum facilisis consequat interdum, tempus ut mauris. Aliquam ut dolor nec odio scelerisque bibendum quis in neque. Aliquam dui dui, pulvinar quis fermentum quis, gravida eu augue. Nunc tristique dolor a urna pulvinar bibendum. Curabitur mollis cursus neque, in scelerisque metus porta non. Donec tempor enim in nibh vestibulum et convallis nisi malesuada. Duis ut lectus sed metus venenatis porttitor id pharetra quam. Suspendisse sapien turpis, ornare in molestie et, gravida eget turpis.
     </p>
   </details>
+  </div>
 </section>
 
 <section>
@@ -98,12 +164,31 @@
 
 <!-- Maybe a font from http://www.google.com/webfonts ? -->
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
 
 <style>
-  html, .view body { background-color: black; counter-reset: slideidx; }
+
+  .topandleft {
+    margin: 10px 75px 0 75px;
+  }
+
+  .centeredimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body{
+    font-weight: 300;
+  }
+
+  html, .view body {
+      background-color: black; counter-reset: slideidx;
+  }
   body, .view section {
     background-color: white; border-radius: 12px;
-    font-family: 'Oswald', arial, serif;
+    font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
+    /* font-family: 'Oswald', arial, serif; */
   }
 
   section, .view head > title {
@@ -117,6 +202,21 @@
     color: white;
   }
 
+ section::before {
+     /* (Un)comment to toggle slide numbers */
+    visibility: visible;
+    content: counter(slideidx);
+    counter-increment: slideidx;
+    background: rgba(255, 255, 255, 0);
+    bottom: 0px;
+    position: absolute;
+    border-radius: 5px;
+    font-weight: 300;
+    left: 15px;
+    font-size: 1.5rem;
+    padding: 0px 10px;
+ }
+
   .view head > title {
     color: white;
     text-align: center;
@@ -126,16 +226,25 @@
   h1 {
     margin: 120px 0 30px 0;
     text-align: center;
-    font-size: 5rem;
+    font-size: 4rem;
+    font-weight: 300;
   }
 
   h2 {
+    margin: 0px 0 30px 0;
     text-align: center;
+    font-weight: 300;
+    font-size: 2rem;
   }
 
   section > h3 {
     margin: 50px 50px 40px 50px;
     border-bottom: 0.1px solid;
+    font-weight: 300;
+  }
+
+  h3.title {
+    font-weight: 500;
   }
 
   pre {
@@ -144,7 +253,6 @@
     margin: 0 75px 0 75px;
     padding: 10px;
     border: 1px solid;
-    font-weight: bold;
     background-color: #F7F7F7;
     width:80%
   }
@@ -215,6 +323,7 @@
     background-color: #F3F4F8;
     border-top: 1px solid #CCC;
     padding-bottom: 4px; /* remember progress bar */
+    padding-top: 5px;
   }
 
   section footer {
@@ -668,7 +777,7 @@
       requestFullscreen.apply(html);
     }
   }
-  
+
   Dz.setProgress = function(aIdx, aStep) {
     var slide = $("section:nth-of-type("+ aIdx +")");
     if (!slide)
@@ -678,14 +787,14 @@
         stepSize = slideSize / steps;
     this.progressBar.style.width = ((aIdx - 1) * slideSize + aStep * stepSize) + '%';
   }
-  
+
   Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
     aMsg = [aMsg];
     for (var i = 2; i < arguments.length; i++)
       aMsg.push(encodeURIComponent(arguments[i]));
     aWin.postMessage(aMsg.join(" "), "*");
   }
-  
+
   function init() {
     Dz.init();
     window.onkeydown = Dz.onkeydown.bind(Dz);
@@ -701,7 +810,7 @@
     Function.prototype.bind = function (oThis) {
 
       // closest thing possible to the ECMAScript 5 internal IsCallable
-      // function 
+      // function
       if (typeof this !== "function")
       throw new TypeError(
         "Function.prototype.bind - what is trying to be fBound is not callable"
