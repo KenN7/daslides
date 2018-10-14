@@ -7,7 +7,7 @@
   <iframe></iframe>
 </div>
 
-<div id="future">
+<!-- <div id="future">
   <iframe></iframe>
 </div>
 
@@ -23,66 +23,25 @@
 
 <div id="time" onclick="Dz.resetClock()">
   <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
-</div>
+</div> -->
 
 <style>
   html, body {
     height: 100%;
     color: white;
+    margin: 0px;
   }
 
   body {
     font-family: sans-serif;
     overflow: hidden;
   }
-
-  #present, #future {
-    bottom: 234px;
-    position: absolute;
-    top: 0;
-    z-index: 5;
-  }
-
+  
   #present {
-    left: 0;
-    right: 50%;
-    border-right: 4px solid #555;
-  }
-
-  #future {
-    left: 50%;
-    right: 0;
-    border-left: 4px solid #555;
-  }
-
-  #notes {
-    background: #EEE;
-    border-top: 8px solid #555;
-    bottom: 0;
-    color: #444;
-    font-size: 30px;
-    height: 226px;
-    left: 0;
-    padding: 0 250px 0 20px;
-    position: absolute;
-    right: 0;
-    overflow: auto;
-  }
-
-  #time {
-    background: #888;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    bottom: 0;
-    font-size: 40px;
-    font-weight: bold;
-    height: 52px;
-    line-height: 52px;
-    right: 30px;
-    position: absolute;
-    text-align: center;
-    width: 200px;
-    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    /* left: 0;
+    right: 50%; */
   }
 
   iframe {
@@ -93,8 +52,7 @@
   }
 
   #slideidx,
-  #nextslideidx,
-  #slidecount {
+    #slidecount {
     background: #888;
     font-size: 40px;
     font-weight: bold;
@@ -106,8 +64,7 @@
     z-index: 10;
   }
 
-  #slideidx,
-  #nextslideidx {
+  #slideidx {
     border-bottom: 4px solid #555;
     bottom: 230px;
     padding: 0 10px;
@@ -120,12 +77,6 @@
     right: 50%;
   }
 
-  #nextslideidx {
-    border-left: 4px solid #555;
-    border-top-right-radius: 10px;
-    left: 50%;
-  }
-
   #slidecount {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -135,21 +86,6 @@
     right: 30px;
   }
 
-  #popup-button {
-    bottom: 88px;
-    background: #888;
-    border: none;
-    border-radius: 10px;
-    color: #FFF;
-    cursor: pointer;
-    height: 52px;
-    font-size: 30px;
-    font-weight: bold;
-    position: absolute;
-    right: 30px;
-    width: 200px;
-    z-index: 10;
-  }
 </style>
 
 <script>
@@ -157,61 +93,16 @@
     views: {},
     notes: null,
     url: null,
-    idx: 1,
-    apiurl: "http://localhost:5001"
+    idx: 1
   };
 
-  Dz.Http = new XMLHttpRequest();
-
-  Dz.get = function(evt) {
-    this.Http.open("GET", evt);
-    this.Http.send();
-  }
-
   Dz.init = function() {
-    this.clock_start = 0;
-    this.startClock();
+    //this.clock_start = 0;
+    //this.startClock();
     this.loadIframes();
-    this.get(this.apiurl+"/s/HOME");
   }
 
-  Dz.onkeydown = function(aEvent) {
-    // Don't intercept keyboard shortcuts
-    if (aEvent.altKey
-      || aEvent.ctrlKey
-      || aEvent.metaKey
-      || aEvent.shiftKey) {
-      return;
-    }
-    if ( aEvent.keyCode == 37 // left arrow
-      || aEvent.keyCode == 38 // up arrow
-      || aEvent.keyCode == 33 // page up
-    ) {
-      aEvent.preventDefault();
-      this.back();
-    }
-    if ( aEvent.keyCode == 39 // right arrow
-      || aEvent.keyCode == 40 // down arrow
-      || aEvent.keyCode == 34 // page down
-    ) {
-      aEvent.preventDefault();
-      this.forward();
-    }
-    if (aEvent.keyCode == 35) { // end
-      aEvent.preventDefault();
-      this.goEnd();
-    }
-    if (aEvent.keyCode == 36) { // home
-      aEvent.preventDefault();
-      this.goStart();
-    }
-    if (aEvent.keyCode == 32) { // space
-      aEvent.preventDefault();
-      this.toggleContent();
-    }
-  }
-
-  Dz.onmessage = function(aEvent) {
+  /*Dz.onmessage = function(aEvent) {
     var argv = aEvent.data.split(" "), argc = argv.length;
     argv.forEach(function(e, i, a) { a[i] = decodeURIComponent(e) });
     if (argv[0] === "CURSOR" && argc === 2) {
@@ -220,22 +111,46 @@
         this.postMsg(this.views.present, "GET_NOTES");
         this.idx = ~~cursor[0];
         this.step = ~~cursor[1];
-        $("#slideidx").innerHTML = argv[1];
-        console.log("CURSOR "+cursor)
-        this.get(this.apiurl+"/s/GOTO+"+this.idx+"."+this.step); //MAJ SSE clients
-
-        this.postMsg(this.views.future, "SET_CURSOR", this.idx + "." + (this.step + 1));
+        //$("#slideidx").innerHTML = argv[1];
+        //this.postMsg(this.views.future, "SET_CURSOR", this.idx + "." + (this.step + 1));
         if (this.views.remote)
           this.postMsg(this.views.remote, "SET_CURSOR", argv[1]);
       } else {
-        $("#nextslideidx").innerHTML = +argv[1] < 0 ? "END" : argv[1];
+        //$("#nextslideidx").innerHTML = +argv[1] < 0 ? "END" : argv[1];
       }
     }
     if (aEvent.source === this.views.present) {
-      if (argv[0] === "NOTES" && argc === 2)
-        $("#notes > #content").innerHTML = this.notes = argv[1];
-      if (argv[0] === "REGISTERED" && argc === 3)
-        $("#slidecount").innerHTML = argv[2];
+      if (argv[0] === "NOTES" && argc === 2){}
+        //$("#notes > #content").innerHTML = this.notes = argv[1];
+      if (argv[0] === "REGISTERED" && argc === 3){}
+        //$("#slidecount").innerHTML = argv[2];
+    }
+} */
+  Dz.onmessage = function(e) {
+    var mes = e.data.split("+"), argc = mes.length
+    console.log(mes);
+    //eventOutputContainer.innerHTML = e.data;
+    if (argc == 1) {
+      if ( mes[0] == "BACK") {
+        this.back();
+      }
+      else if ( mes[0] == "NEXT" ) {
+        this.forward();
+      }
+      else if (mes[0] == "END") { // end
+        this.goEnd();
+      }
+      else if (mes[0] == "HOME") { // home
+        this.goStart();
+      }
+      else if (mes[0] == "TOGGLE") { // space
+        this.toggleContent();
+      }
+    }
+    else if (argc == 2) {
+      if (mes[0] == "GOTO") { // space
+        this.setCursor(mes[1]);
+      }
     }
   }
 
@@ -259,15 +174,14 @@
 
   Dz.loadIframes = function() {
     var present = $("#present iframe");
-    var future = $("#future iframe");
+    //var future = $("#future iframe");
     this.url = this.getUrl();
-    present.src = future.src = this.url + '?autoplay=0';
-    present.onload = future.onload = function() {
+    present.src = this.url + '?autoplay=0';
+    present.onload = function() {
       var id = this.parentNode.id;
       Dz.views[id] = this.contentWindow;
-      if (Dz.views.present && Dz.views.future) {
+      if (Dz.views.present) {
         Dz.postMsg(Dz.views.present, "REGISTER");
-        Dz.postMsg(Dz.views.future, "REGISTER");
       }
     }
   }
@@ -283,31 +197,22 @@
 
   Dz.back = function() {
     this.postMsg(this.views.present, "BACK");
-    //this.get(this.apiurl+"/s/BACK"); //all of this is done is the CURSOR handler l.225
   }
 
   Dz.forward = function() {
     this.postMsg(this.views.present, "FORWARD");
-    //this.get(this.apiurl+"/s/NEXT");
   }
 
   Dz.goStart = function() {
     this.postMsg(this.views.present, "START");
-    //this.get(this.apiurl+"/s/HOME");
   }
 
   Dz.goEnd = function() {
     this.postMsg(this.views.present, "END");
-    //this.get(this.apiurl+"/s/END");
   }
 
   Dz.setCursor = function(aCursor) {
     this.postMsg(this.views.present, "SET_CURSOR", aCursor);
-    //this.get(this.apiurl+"/s/GOTO+"+aCursor);
-  }
-
-  Dz.popup = function() {
-    this.views.remote = window.open(this.url + "#" + this.idx, 'slides', 'width=800,height=600,personalbar=0,toolbar=0,scrollbars=1,resizable=1');
   }
 
   Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
@@ -317,27 +222,13 @@
     aWin.postMessage(aMsg.join(" "), "*");
   }
 
-  Dz.resetClock = function() { // + 3600000, because Date(0) is 01:00:00
-    this.clock_start = (new Date()).getTime() + 3600000;
-  }
-
-  Dz.startClock = function() {
-    var addZero = function(num) {
-      return num < 10 ? '0' + num : num;
-    }
-    setInterval(function() {
-      var now = new Date((new Date()).getTime() - this.Dz.clock_start);
-      $("#hours").innerHTML   = addZero(now.getHours());
-      $("#minutes").innerHTML = addZero(now.getMinutes());
-      $("#seconds").innerHTML = addZero(now.getSeconds());
-    }, 1000);
-  }
-
   function init() {
     Dz.init();
-    window.onkeydown = Dz.onkeydown.bind(Dz);
+    //window.onkeydown = Dz.onkeydown.bind(Dz);
     window.onhashchange = Dz.loadIframes.bind(Dz);
-    window.onmessage = Dz.onmessage.bind(Dz);
+    //window.onmessage = Dz.onmessage.bind(Dz);
+    var evtSrc = new EventSource("http://127.0.0.1:5001/subscribe");
+    evtSrc.onmessage = Dz.onmessage.bind(Dz);
   }
 
   window.onload = init;
