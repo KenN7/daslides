@@ -394,12 +394,16 @@
   }
   .view body {
     position: static;
-    margin: 0; padding: 0;
-    width: 100%; height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     display: inline-block;
     overflow: visible; overflow-x: hidden;
     /* undo Dz.onresize */
     transform: none !important;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
   }
   .view head, .view head > title { display: block }
   section {
@@ -680,9 +684,9 @@
     if (newidx != this.idx) {
       this.setSlide(newidx);
     }
-    if (newstep != this.step) {
-      this.setIncremental(newstep,this.step);
-    }
+    //if (newstep != this.step) {
+    this.setIncremental(newstep);
+    //}
     for (var i = 0; i < this.remoteWindows.length; i++) {
       this.postMsg(this.remoteWindows[i], "CURSOR", this.idx + "." + this.step);
     }
@@ -733,6 +737,7 @@
     this.html.classList.toggle("view");
 
     if (this.html.classList.contains("view")) {
+      console.log("triggeres")
       $("section[aria-selected]").scrollIntoView(true);
     }
   }
@@ -765,14 +770,16 @@
     }
   }
 
-  Dz.setIncremental = function(aStep,oldStep) {
+  Dz.setIncremental = function(aStep) {
     this.step = aStep;
     var incrementals = Array.prototype.slice.call(this.slides[this.idx - 1].$$('.next')).sort(function(a, b) {
             return Number(a.getAttribute('next-order')) - Number(b.getAttribute('next-order'));
           });
     //console.log(incrementals)
+    /*
     var next = incrementals[this.step - 1];
     var prev = incrementals[this.step];
+    console.log("step:"+aStep+" old:"+oldStep);
     if (next && aStep > oldStep) { //go forward in steps
       next.setAttribute('active', true);
       if (aStep - oldStep > 1) { // check if step is more than 1, in that case
@@ -783,7 +790,7 @@
         }
       }
     }
-    else if (prev && aStep < oldStep) { //go backwards in steps
+    else if (prev && aStep < oldStep) { //go backwards in steps only if didnt change slide
       prev.removeAttribute('active');
       if ( oldStep - aStep > 1) { // check if step is more than 1, in that case
         var i;                   // deactivates all intermediate steps to keep logic of slides
@@ -796,7 +803,15 @@
     } else {
       this.setCursor(this.idx, 0);
     }
-    return next;
+    return next;*/
+    for (i = 0; i < incrementals.length ; i++) {
+      var interIncrementals = incrementals[i];
+      if (i < aStep) {
+        interIncrementals.setAttribute('active', true);
+      } else {
+        interIncrementals.removeAttribute('active');
+      }
+    }
   }
 
   Dz.goFullscreen = function() {
