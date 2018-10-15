@@ -27,6 +27,7 @@ class ServerSentEvent(object):
 
 app = Flask(__name__)
 subscriptions = []
+lastmessage = ""
 
 # Client code consumes like this.
 @app.route("/")
@@ -39,7 +40,6 @@ def debug():
 
 @app.route("/s/<action>")
 def publish(action):
-    #Dummy data - pick up from request for real data
     def notify():
         msg = str(action)
         for sub in subscriptions:
