@@ -27,43 +27,8 @@
   iframe {
     border: none;
     height: 100%;
-    pointer-events: none;
+    /* pointer-events: none; */ /*should this be on of off ? */
     width: 100%;
-  }
-
-  #slideidx,
-    #slidecount {
-    background: #888;
-    font-size: 40px;
-    font-weight: bold;
-    height: 52px;
-    line-height: 52px;
-    margin: 0;
-    position: absolute;
-    text-align: center;
-    z-index: 10;
-  }
-
-  #slideidx {
-    border-bottom: 4px solid #555;
-    bottom: 230px;
-    padding: 0 10px;
-  }
-
-  #slideidx {
-    border-right: 4px solid #555;
-    border-top-left-radius: 10px;
-    cursor: pointer;
-    right: 50%;
-  }
-
-  #slidecount {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top: 4px solid #555;
-    bottom: 174px;
-    width: 200px;
-    right: 30px;
   }
 
 </style>
@@ -127,7 +92,6 @@
 
   Dz.loadIframes = function() {
     var present = $("#present iframe");
-    //var future = $("#future iframe");
     this.url = this.getUrl();
     present.src = this.url + '?autoplay=0';
     present.onload = function() {
@@ -141,6 +105,10 @@
 
   Dz.onhashchange = function() {
     this.loadIframe();
+  }
+
+  Dz.toggleContent = function() {
+    this.postMsg(this.views.present, "TOGGLE_CONTENT");
   }
 
   Dz.back = function() {
@@ -170,6 +138,8 @@
     aWin.postMessage(aMsg.join(" "), "*");
   }
 
+  //this func is used to update the first slide to that newcomers
+  // are not desynchronized
   function updateFirstSlide() { //it takes around 100ms to load iframe
     if(typeof Dz.views.present !== "undefined"){
       const Http = new XMLHttpRequest();

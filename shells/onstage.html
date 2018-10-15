@@ -221,9 +221,9 @@
         this.idx = ~~cursor[0];
         this.step = ~~cursor[1];
         $("#slideidx").innerHTML = argv[1];
-        console.log("CURSOR "+cursor)
+        // console.log("CURSOR "+cursor) //the views.present tells us
+        // where it is and we propagate it
         this.get(this.apiurl+"/s/GOTO+"+this.idx+"."+this.step); //MAJ SSE clients
-
         this.postMsg(this.views.future, "SET_CURSOR", this.idx + "." + (this.step + 1));
         if (this.views.remote)
           this.postMsg(this.views.remote, "SET_CURSOR", argv[1]);
@@ -275,6 +275,7 @@
   Dz.toggleContent = function() {
     if (this.views.remote)
       this.postMsg(this.views.remote, "TOGGLE_CONTENT");
+      this.get(this.apiurl+"/s/TOGGLE");
   }
 
   Dz.onhashchange = function() {

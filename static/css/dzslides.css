@@ -1,0 +1,299 @@
+
+
+  .topandleft {
+    margin: 10px 75px 0 75px;
+  }
+
+  .centeredimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body{
+    font-weight: 300;
+  }
+
+  html, .view body {
+      background-color: black; counter-reset: slideidx;
+  }
+  body, .view section {
+    background-color: white; border-radius: 12px;
+    font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
+    /* font-family: 'Oswald', arial, serif; */
+  }
+
+  section, .view head > title {
+      font-size: 2rem;
+  }
+
+  .view section:after {
+    counter-increment: slideidx;
+    content: counter(slideidx, decimal-leading-zero);
+    position: absolute; bottom: -80px; right: 100px;
+    color: white;
+  }
+
+ section::before {
+     /* (Un)comment to toggle slide numbers */
+    visibility: visible;
+    content: counter(slideidx);
+    counter-increment: slideidx;
+    background: rgba(255, 255, 255, 0);
+    bottom: 0px;
+    position: absolute;
+    border-radius: 5px;
+    font-weight: 300;
+    left: 15px;
+    font-size: 1.5rem;
+    padding: 0px 10px;
+ }
+
+  .view head > title {
+    color: white;
+    text-align: center;
+    margin: 1em 0 1em 0;
+  }
+
+  h1 {
+    margin: 120px 0 30px 0;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 300;
+  }
+
+  h2 {
+    margin: 0px 0 30px 0;
+    text-align: center;
+    font-weight: 300;
+    font-size: 2rem;
+  }
+
+  section > h3 {
+    margin: 50px 50px 40px 50px;
+    border-bottom: 0.1px solid;
+    font-weight: 300;
+  }
+
+  h3.title {
+    font-weight: 500;
+  }
+
+  pre {
+    overflow: hidden;
+    font-size: 1.25rem;
+    margin: 0 75px 0 75px;
+    padding: 10px;
+    border: 1px solid;
+    background-color: #F7F7F7;
+    width:80%
+  }
+
+  ul, ol {
+      margin: 40px 100px 0 100px;
+  }
+
+  li > ul, ol {
+      margin: 0 0 15px 50px;
+      list-style-image: none; /* in case parent list has some */
+  }
+
+  mark.next:not([active]) {
+    visibility: visible; /* override the default behavior where next is hidden */
+    background-color: inherit; /* and disable highlighting instead */
+  }
+
+  p {
+    margin: 75px 75px 0 75px;
+    font-size: 3rem;
+  }
+
+  table {
+    margin: auto;
+    font-size:2.5rem;
+    text-align: center;
+  }
+
+  blockquote {
+    height: 100%;
+    background-color: black;
+    color: white;
+    font-size: 3.75rem;
+    padding: 50px;
+  }
+  blockquote:before {
+    content: open-quote;
+  }
+  blockquote:after {
+    content: close-quote;
+  }
+
+  /* Figures are displayed full-page, with the caption
+     on top of the image/video */
+  figure {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+  }
+  figure > * {
+    position: absolute;
+  }
+  figure > img, figure > video {
+    width: 100%; height: 100%;
+  }
+  figcaption {
+    margin: 70px;
+    font-size: 3rem;
+  }
+
+  header {
+    background-color: #F3F4F8;
+    border-bottom: 1px solid #CCC;
+  }
+
+  footer {
+    background-color: #F3F4F8;
+    border-top: 1px solid #CCC;
+    padding-bottom: 4px; /* remember progress bar */
+    padding-top: 5px;
+  }
+
+  section footer {
+    padding: 10px;
+  }
+
+  /* Transition effect */
+  /* Feel free to change the transition effect for original
+     animations. See here:
+     https://developer.mozilla.org/en/CSS/CSS_transitions
+     How to use CSS3 Transitions: */
+  section {
+    transition: left 400ms linear 0s;
+  }
+  .view section {
+    transition: none;
+  }
+
+  .view section[aria-selected] {
+    border: 5px red solid;
+  }
+
+@media screen {
+  /* Before */
+  section { left: -150%; }
+  /* Now */
+  section[aria-selected] { left: 0; }
+  /* After */
+  section[aria-selected] ~ section { left: +150%; }
+}
+
+  /* The progressbar, at the bottom of the slides, show the global
+     progress of the presentation. */
+  #progress-bar {
+    height: 4px;
+    background: #AAA;
+  }
+
+/*#     __  __  __       .  __   ___  __
+  #    |  \  / /__` |    | |  \ |__  /__`
+  #    |__/ /_ .__/ |___ | |__/ |___ .__/ core :€
+  #
+  #
+  # The following block of code is not supposed to be edited.
+  # But if you want to change the behavior of these slides,
+  # feel free to hack it! */
+
+  /* <!-- Default Style --> */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    [role="note"] { display: none; }
+    html {
+      font-size: 16px;
+    }
+    body {
+      width: 800px; height: 600px;
+      position: absolute; top: 50%; left: 50%;
+      overflow: hidden;
+      display: none;
+    }
+    .view body {
+      position: static;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      overflow: visible; overflow-x: hidden;
+      /* undo Dz.onresize */
+      transform: none !important;
+      margin-top: 0px !important;
+      margin-left: 0px !important;
+    }
+    .view head, .view head > title { display: block }
+    section {
+      position: absolute;
+      pointer-events: none;
+      width: 100%; height: 100%;
+    }
+    .view section {
+      pointer-events: auto;
+      position: static;
+      width: 800px; height: 600px;
+      margin: -150px -200px;
+      float: left;
+
+      transform: scale(.4);
+    }
+    .view section > * { pointer-events: none; }
+    section[aria-selected] { pointer-events: auto; }
+    html { overflow: hidden; }
+    html.view { overflow: visible; }
+    body.loaded { display: block; }
+    .next:not([active]) {visibility: hidden; }
+    #progress-bar{
+      bottom: 0;
+      position: absolute;
+      transition: width 400ms linear 0s;
+    }
+    .view #progress-bar {
+      display: none;
+    }
+    header {
+      text-align: right;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    footer {
+      text-align: right;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .view header { display: none; }
+    .view footer { display: none; }
+
+  @media print {
+    section {
+      transition: none;
+      transform: none;
+      position: static;
+      page-break-inside: avoid;
+    }
+    body { overflow: visible; }
+    #progress-bar{ display:none; }
+  }
+
+  /*
+     **************************************
+     Uncomment the following for 16:9 slides
+     **************************************
+
+    html { font-size: 12px; }
+    body { height: 450px; }
+    .view section {
+      height: 450px;
+      margin: -140px -200px;
+      transform: scale(.3);
+    }
+  */
