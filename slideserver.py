@@ -38,10 +38,16 @@ def index():
 def debug():
     return "Currently %d subscriptions" % len(subscriptions)
 
+@app.route("/where")
+def where():
+    return lastmessage
+
 @app.route("/s/<action>")
 def publish(action):
     def notify():
+        global lastmessage
         msg = str(action)
+        lastmessage = msg #update for new clients
         for sub in subscriptions:
             sub.put(msg)
 
@@ -65,7 +71,7 @@ def subscribe():
 ###
 def add_cors_headers(response):
     response.headers['Access-Control-Allow-Origin'] = 'http://127.0.0.1:5001'
-    response.headers['Access-Control-Allow-Origin'] = 'null'
+    response.headers['Access-Control-Allow-Origin'] = 'null' #for local operation
     if request.method == 'OPTIONS':
         response.headers['Access-Control-Allow-Methods'] = 'DELETE, GET, POST, PUT'
         headers = request.headers.get('Access-Control-Request-Headers')
@@ -80,5 +86,5 @@ if __name__ == "__main__":
     server = WSGIServer(("", 5001), app)
     print("Server ready.. Serving..")
     server.serve_forever()
-    # Then visit http://localhost:5000 to subscribe
-    # and send messages by visiting http://localhost:5000/publish
+    # Then visit http://localhost:5001 to subscribe
+    # and send messages by visiting http://localhost:5001/s/action
