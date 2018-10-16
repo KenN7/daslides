@@ -7,6 +7,7 @@ from gevent.queue import Queue
 
 from flask import Flask, request, redirect, url_for, render_template
 from flask import Response
+from flask_cors import CORS
 
 import time
 
@@ -26,6 +27,8 @@ class ServerSentEvent(object):
         return val
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
+
 subscriptions = []  #TODO remove global variables to allow multithreaded operations (redis ?)
 lastmessage = ""
 
@@ -68,21 +71,9 @@ def subscribe():
             subscriptions.remove(q)
     return Response(gen(), mimetype="text/event-stream")
 
-###
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = 'http://127.0.0.1:5000'
-    #response.headers['Access-Control-Allow-Origin'] = 'null' #for local operation
-    if request.method == 'OPTIONS':
-        response.headers['Access-Control-Allow-Methods'] = 'DELETE, GET, POST, PUT'
-        headers = request.headers.get('Access-Control-Request-Headers')
-        if headers:
-            response.headers['Access-Control-Allow-Headers'] = headers
-    return response
-
 
 if __name__ == "__main__":
     app.debug = True
-    app.after_request(add_cors_headers)
     server = WSGIServer(("0.0.0.0", 5001), app)
     print("Server ready.. Serving..")
     server.serve_forever()
