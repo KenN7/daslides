@@ -1,31 +1,177 @@
 <!DOCTYPE html>
 
 <meta charset="utf8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DZSlides</title>
 
-<div id="present">
+<div id="present" hidden>
   <iframe></iframe>
 </div>
-
+<!--
 <div id="future">
   <iframe></iframe>
+</div> -->
+<div style="display:inline-flex;">
+
+<button class="button" id="back" onclick="Dz.back()"><span>Prev</span></button>
+<button class="button" id="next" onclick="Dz.forward()"><span>Next</span></button>
+
 </div>
 
-<div id="slideidx" onclick="Dz.setCursor(prompt('Go to slide...','1'));">?</div>
-<div id="nextslideidx">?</div>
+<!-- <div id="slideidx" onclick="Dz.setCursor(prompt('Go to slide...','1'));">?</div> -->
+<!-- <div id="nextslideidx">?</div> -->
+<div id="time" onclick="Dz.resetClock()">
+  <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+</div>
 
 <div id="notes">
   <p id="content"></p>
 </div>
 
-<div id="slidecount">?</div>
-<button id="popup-button" onclick="Dz.popup()">Pop-up</button>
-
-<div id="time" onclick="Dz.resetClock()">
-  <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+<div id="videos">
 </div>
+<!-- <div id="slidecount">?</div> -->
+<!-- <button id="popup-button" onclick="Dz.popup()">Pop-up</button> -->
+
+
 
 <style>
+
+.button{
+    border-radius: 25px;
+     /* position: absolute; */
+    font-size: 3rem;
+    text-align: center;
+    height: 60vh;
+    width: 50vw;
+}
+
+
+
+#videos button {
+    width: 20vw;
+    height: 15vh;
+}
+
+#videos {
+    margin-top: 10px;
+}
+
+#back {
+    background-color: lightskyblue;
+    /* bottom:0;
+    left: 0; right: 0; */
+}
+
+#next {
+    background-color: lightgreen;
+    /* top:0;
+    left: 0; right: 0; */
+}
+
+
+#notes {
+  background: #EEE;
+  border-top: 8px solid #555;
+  color: #444;
+  font-size: 30px;
+  height: 30vh;
+}
+
+#time {
+  background: #888;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  width: 10rem;
+  cursor: pointer;
+}
+
+/* begin Phone style */
+
+* {
+    box-sizing: border-box;
+}
+
+/* passer body (et tous les éléments de largeur fixe) en largeur automatique */
+
+body {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* fixer une largeur maximale de 100% aux éléments potentiellement problématiques */
+
+img,
+table,
+td,
+blockquote,
+code,
+pre,
+textarea,
+input,
+iframe,
+object,
+embed,
+video {
+    max-width: 100%;
+}
+
+/* conserver le ratio des images */
+
+img {
+    height: auto;
+}
+
+/* gestion des mots longs */
+
+textarea,
+table,
+td,
+th,
+code,
+pre,
+samp {
+    -webkit-hyphens: auto; /* césure propre */
+    -moz-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word; /* passage à la ligne forcé */
+}
+
+code,
+pre,
+samp {
+    white-space: pre-wrap; /* passage à la ligne spécifique pour les éléments à châsse fixe */
+}
+
+/* Passer à une seule colonne (à appliquer aux éléments multi-colonnes) */
+
+.element1,
+.element2 {
+    float: none;
+    width: auto;
+}
+
+/* masquer les éléments superflus */
+
+.hide_mobile {
+    display: none !important;
+}
+
+/* Un message personnalisé */
+
+body:before {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    color: #777;
+}
+
+/* end Phone style */
+/*
   html, body {
     height: 100%;
     color: white;
@@ -54,44 +200,12 @@
     right: 0;
     border-left: 4px solid #555;
   }
-
-  #notes {
-    background: #EEE;
-    border-top: 8px solid #555;
-    bottom: 0;
-    color: #444;
-    font-size: 30px;
-    height: 226px;
-    left: 0;
-    padding: 0 250px 0 20px;
-    position: absolute;
-    right: 0;
-    overflow: auto;
-  }
-
-  #time {
-    background: #888;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    bottom: 0;
-    font-size: 40px;
-    font-weight: bold;
-    height: 52px;
-    line-height: 52px;
-    right: 30px;
-    position: absolute;
-    text-align: center;
-    width: 200px;
-    cursor: pointer;
-  }
-
+*/
   iframe {
     border: none;
-    height: 100%;
     pointer-events: none;
-    width: 100%;
   }
-
+/*
   #slideidx,
   #nextslideidx,
   #slidecount {
@@ -149,7 +263,7 @@
     right: 30px;
     width: 200px;
     z-index: 10;
-  }
+  } */
 </style>
 
 <script>
@@ -180,9 +294,9 @@
     this.clock_start = 0;
     this.startClock();
     this.loadIframes();
-    this.get(this.apiurl()+"/s/HOME");
+    //this.get(this.apiurl()+"/s/HOME");
   }
-
+/*
   Dz.onkeydown = function(aEvent) {
     // Don't intercept keyboard shortcuts
     if (aEvent.altKey
@@ -225,10 +339,10 @@
       console.log(aEvent);
     }
   }
-
+*/
   Dz.onmessage = function(aEvent) {
     var argv = aEvent.data.split(" "), argc = argv.length;
-    console.log('onstage got:'+aEvent.data); //DEBUG
+    console.log('phonestageframe got:'+aEvent.data); //DEBUG
     argv.forEach(function(e, i, a) { a[i] = decodeURIComponent(e) });
     if (argv[0] === "CURSOR" && argc === 2) {
       if (aEvent.source === this.views.present) {
@@ -237,26 +351,35 @@
         this.postMsg(this.views.present, "GET_VIDEOS");
         this.idx = ~~cursor[0];
         this.step = ~~cursor[1];
-        $("#slideidx").innerHTML = argv[1];
+        //$("#slideidx").innerHTML = argv[1];
         // console.log("CURSOR "+cursor) //the views.present tells us
         // where it is and we propagate it
         this.get(this.apiurl()+"/s/GOTO+"+this.idx+"."+this.step); //MAJ SSE clients
-        this.postMsg(this.views.future, "SET_CURSOR", this.idx + "." + (this.step + 1));
-        if (this.views.remote)
+
+        //this.postMsg(this.views.future, "SET_CURSOR", this.idx + "." + (this.step + 1));
+        if (this.views.remote) {
           this.postMsg(this.views.remote, "SET_CURSOR", argv[1]);
+        }
       } else {
-        $("#nextslideidx").innerHTML = +argv[1] < 0 ? "END" : argv[1];
+        //$("#nextslideidx").innerHTML = +argv[1] < 0 ? "END" : argv[1];
       }
     }
     if (aEvent.source === this.views.present) {
-      if (argv[0] === "NOTES" && argc === 2) {
+      if (argv[0] === "NOTES" && argc === 2)
         $("#notes > #content").innerHTML = this.notes = argv[1];
-      }
-      if (argv[0] === "REGISTERED" && argc === 3) {
-        $("#slidecount").innerHTML = argv[2];
-      }
+       //if (argv[0] === "REGISTERED" && argc === 3)
+      //   $("#slidecount").innerHTML = argv[2];
       if (argv[0] === "VIDEOS" && argc === 2) {
         console.log("videonumber:"+argv[1]);
+        $("#videos").innerHTML = "";
+        for (var i = 0; i < argv[1]; i++) {
+            var node = document.createElement("BUTTON");
+            var child = $("#videos").appendChild(node);
+            child.innerHTML = "video "+i
+            child.onclick = function(i){
+                return () => {Dz.toggleVideo(i);}
+            }(i);
+        }
       }
     }
   }
@@ -283,15 +406,13 @@
 
   Dz.loadIframes = function() {
     var present = $("#present iframe");
-    var future = $("#future iframe");
     this.url = this.getUrl();
-    present.src = future.src = this.url + '?autoplay=0';
-    present.onload = future.onload = function() {
+    present.src = this.url + '?autoplay=0';
+    present.onload = function() {
       var id = this.parentNode.id;
       Dz.views[id] = this.contentWindow;
-      if (Dz.views.present && Dz.views.future) {
+      if (Dz.views.present) {
         Dz.postMsg(Dz.views.present, "REGISTER");
-        Dz.postMsg(Dz.views.future, "REGISTER");
       }
     }
   }
@@ -311,32 +432,24 @@
   }
 
   Dz.back = function() {
-    this.postMsg(this.views.present, "BACK");
     //this.get(this.apiurl()+"/s/BACK"); //all of this is done is the CURSOR handler l.225
+    this.postMsg(this.views.present, "BACK");
   }
 
   Dz.forward = function() {
     this.postMsg(this.views.present, "FORWARD");
-    //this.get(this.apiurl()+"/s/NEXT");
   }
 
   Dz.goStart = function() {
     this.postMsg(this.views.present, "START");
-    //this.get(this.apiurl()+"/s/HOME");
   }
 
   Dz.goEnd = function() {
     this.postMsg(this.views.present, "END");
-    //this.get(this.apiurl()+"/s/END");
   }
 
   Dz.setCursor = function(aCursor) {
     this.postMsg(this.views.present, "SET_CURSOR", aCursor);
-    //this.get(this.apiurl()+"/s/GOTO+"+aCursor);
-  }
-
-  Dz.popup = function() {
-    this.views.remote = window.open(this.url + "#" + this.idx, 'slides', 'width=800,height=600,personalbar=0,toolbar=0,scrollbars=1,resizable=1');
   }
 
   Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
@@ -364,8 +477,8 @@
 
   function init() {
     Dz.init();
-    window.onkeydown = Dz.onkeydown.bind(Dz);
-    window.onhashchange = Dz.loadIframes.bind(Dz);
+    //window.onkeydown = Dz.onkeydown.bind(Dz);
+    //window.onhashchange = Dz.loadIframes.bind(Dz);
     window.onmessage = Dz.onmessage.bind(Dz);
   }
 

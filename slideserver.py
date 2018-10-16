@@ -70,8 +70,8 @@ def subscribe():
 
 ###
 def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = 'http://127.0.0.1:5001'
-    response.headers['Access-Control-Allow-Origin'] = 'null' #for local operation
+    response.headers['Access-Control-Allow-Origin'] = 'http://127.0.0.1:5000'
+    #response.headers['Access-Control-Allow-Origin'] = 'null' #for local operation
     if request.method == 'OPTIONS':
         response.headers['Access-Control-Allow-Methods'] = 'DELETE, GET, POST, PUT'
         headers = request.headers.get('Access-Control-Request-Headers')
@@ -83,7 +83,7 @@ def add_cors_headers(response):
 if __name__ == "__main__":
     app.debug = True
     app.after_request(add_cors_headers)
-    server = WSGIServer(("", 5001), app)
+    server = WSGIServer(("0.0.0.0", 5001), app)
     print("Server ready.. Serving..")
     server.serve_forever()
     # Then visit http://localhost:5001 to subscribe

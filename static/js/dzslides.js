@@ -154,8 +154,15 @@
     return d ? d.innerHTML : "";
   }
 
+  Dz.getVideos = function(aIdx) {
+    var s = $("section:nth-of-type(" + aIdx + ")");
+    var v = s.$$("video");
+    return v.length;
+  }
+
   Dz.onmessage = function(aEvent) {
     var argv = aEvent.data.split(" "), argc = argv.length;
+    console.log('template got:'+aEvent.data); //DEBUG
     argv.forEach(function(e, i, a) { a[i] = decodeURIComponent(e) });
     var win = aEvent.source;
     if (argv[0] === "REGISTER" && argc === 1) {
@@ -174,12 +181,31 @@
       this.goEnd();
     if (argv[0] === "TOGGLE_CONTENT" && argc === 1)
       this.toggleContent();
+    if (argv[0] === "TOGGLEVID" && argc === 2)
+      this.toggleVideo(argv[1]);
     if (argv[0] === "SET_CURSOR" && argc === 2)
       window.location.hash = "#" + argv[1];
     if (argv[0] === "GET_CURSOR" && argc === 1)
       this.postMsg(win, "CURSOR", this.idx + "." + this.step);
     if (argv[0] === "GET_NOTES" && argc === 1)
       this.postMsg(win, "NOTES", this.getNotes(this.idx));
+    if (argv[0] === "GET_VIDEOS" && argc === 1)
+      this.postMsg(win, "VIDEOS", this.getVideos(this.idx));
+  }
+
+  Dz.toggleVideo = function(num) {
+    var s = $("section[aria-selected]");
+    if (s) {
+      var video = s.$$("video");
+      var selectedvid = video[num]
+      if (selectedvid) {
+        if (selectedvid.ended || selectedvid.paused) {
+          selectedvid.play();
+        } else {
+          selectedvid.pause();
+        }
+      }
+    }
   }
 
   Dz.toggleContent = function() {
@@ -272,7 +298,6 @@
     this.html.classList.toggle("view");
 
     if (this.html.classList.contains("view")) {
-      console.log("triggeres")
       $("section[aria-selected]").scrollIntoView(true);
     }
   }
