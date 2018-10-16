@@ -38,9 +38,17 @@
     views: {},
     notes: null,
     url: null,
-    idx: 1,
-    apiurl: "http://127.0.0.1:5001" //Set APIURL here
+    idx: 1
   };
+
+  Dz.apiurl = function () {
+      var u = "{{ apiurl }}";
+      if (u) {
+          return u
+      } else {
+          return "http://127.0.0.1:5001"
+      }
+  }
 
   Dz.init = function() {
     this.loadIframes();
@@ -152,7 +160,7 @@
   function updateFirstSlide() { //it takes around 100ms to load iframe
     if(typeof Dz.views.present !== "undefined"){
       const Http = new XMLHttpRequest();
-      const url=Dz.apiurl+'/where';
+      const url=Dz.apiurl()+'/where';
       Http.open("GET", url);
       Http.send();
       Http.onreadystatechange=(e)=>{
@@ -167,7 +175,7 @@
   function init() {
     Dz.init()
     window.onhashchange = Dz.loadIframes.bind(Dz);
-    var evtSrc = new EventSource(Dz.apiurl+"/subscribe");
+    var evtSrc = new EventSource(Dz.apiurl()+"/subscribe");
     evtSrc.onmessage = Dz.onmessage.bind(Dz);
     updateFirstSlide();
   }

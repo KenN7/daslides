@@ -157,9 +157,17 @@
     views: {},
     notes: null,
     url: null,
-    idx: 1,
-    apiurl: "http://localhost:5001"
+    idx: 1
   };
+
+  Dz.apiurl = function () {
+      var u = "{{ apiurl }}";
+      if (u) {
+          return u
+      } else {
+          return "http://127.0.0.1:5001"
+      }
+  }
 
   Dz.Http = new XMLHttpRequest();
 
@@ -172,7 +180,7 @@
     this.clock_start = 0;
     this.startClock();
     this.loadIframes();
-    this.get(this.apiurl+"/s/HOME");
+    this.get(this.apiurl()+"/s/HOME");
   }
 
   Dz.onkeydown = function(aEvent) {
@@ -232,7 +240,7 @@
         $("#slideidx").innerHTML = argv[1];
         // console.log("CURSOR "+cursor) //the views.present tells us
         // where it is and we propagate it
-        this.get(this.apiurl+"/s/GOTO+"+this.idx+"."+this.step); //MAJ SSE clients
+        this.get(this.apiurl()+"/s/GOTO+"+this.idx+"."+this.step); //MAJ SSE clients
         this.postMsg(this.views.future, "SET_CURSOR", this.idx + "." + (this.step + 1));
         if (this.views.remote)
           this.postMsg(this.views.remote, "SET_CURSOR", argv[1]);
@@ -292,39 +300,39 @@
     if (this.views.remote) {
       this.postMsg(this.views.remote, "TOGGLE_CONTENT");
     }
-    this.get(this.apiurl+"/s/TOGGLE");
+    this.get(this.apiurl()+"/s/TOGGLE");
   }
 
   Dz.toggleVideo = function(videoNumber) {
     if (this.views.remote) {
       this.postMsg(this.views.remote, "TOGGLEVID "+videoNumber);
     }
-    this.get(this.apiurl+"/s/TOGGLEVID+"+videoNumber);
+    this.get(this.apiurl()+"/s/TOGGLEVID+"+videoNumber);
   }
 
   Dz.back = function() {
     this.postMsg(this.views.present, "BACK");
-    //this.get(this.apiurl+"/s/BACK"); //all of this is done is the CURSOR handler l.225
+    //this.get(this.apiurl()+"/s/BACK"); //all of this is done is the CURSOR handler l.225
   }
 
   Dz.forward = function() {
     this.postMsg(this.views.present, "FORWARD");
-    //this.get(this.apiurl+"/s/NEXT");
+    //this.get(this.apiurl()+"/s/NEXT");
   }
 
   Dz.goStart = function() {
     this.postMsg(this.views.present, "START");
-    //this.get(this.apiurl+"/s/HOME");
+    //this.get(this.apiurl()+"/s/HOME");
   }
 
   Dz.goEnd = function() {
     this.postMsg(this.views.present, "END");
-    //this.get(this.apiurl+"/s/END");
+    //this.get(this.apiurl()+"/s/END");
   }
 
   Dz.setCursor = function(aCursor) {
     this.postMsg(this.views.present, "SET_CURSOR", aCursor);
-    //this.get(this.apiurl+"/s/GOTO+"+aCursor);
+    //this.get(this.apiurl()+"/s/GOTO+"+aCursor);
   }
 
   Dz.popup = function() {

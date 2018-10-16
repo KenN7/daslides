@@ -13,8 +13,8 @@
 </div> -->
 <div style="display:inline-flex;">
 
-<div class="button" id="back" onclick="Dz.back()"><span>Prev</span></div>
-<div class="button" id="next" onclick="Dz.forward()"><span>Next</span></div>
+<button class="button" id="back" onclick="Dz.back()"><span>Prev</span></button>
+<button class="button" id="next" onclick="Dz.forward()"><span>Next</span></button>
 
 </div>
 
@@ -46,10 +46,7 @@
     width: 50vw;
 }
 
-.button span {
-    display: inline-block;
-    margin-top: 40%;
-}
+
 
 #videos button {
     width: 20vw;
@@ -274,9 +271,17 @@ body:before {
     views: {},
     notes: null,
     url: null,
-    idx: 1,
-    apiurl: "http://localhost:5001"
+    idx: 1
   };
+
+  Dz.apiurl = function () {
+      var u = "{{ apiurl }}";
+      if (u) {
+          return u
+      } else {
+          return "http://127.0.0.1:5001"
+      }
+  }
 
   Dz.Http = new XMLHttpRequest();
 
@@ -289,7 +294,7 @@ body:before {
     this.clock_start = 0;
     this.startClock();
     this.loadIframes();
-    //this.get(this.apiurl+"/s/HOME");
+    //this.get(this.apiurl()+"/s/HOME");
   }
 /*
   Dz.onkeydown = function(aEvent) {
@@ -349,7 +354,7 @@ body:before {
         //$("#slideidx").innerHTML = argv[1];
         // console.log("CURSOR "+cursor) //the views.present tells us
         // where it is and we propagate it
-        this.get(this.apiurl+"/s/GOTO+"+this.idx+"."+this.step); //MAJ SSE clients
+        this.get(this.apiurl()+"/s/GOTO+"+this.idx+"."+this.step); //MAJ SSE clients
 
         //this.postMsg(this.views.future, "SET_CURSOR", this.idx + "." + (this.step + 1));
         if (this.views.remote) {
@@ -416,18 +421,18 @@ body:before {
     if (this.views.remote) {
       this.postMsg(this.views.remote, "TOGGLE_CONTENT");
     }
-    this.get(this.apiurl+"/s/TOGGLE");
+    this.get(this.apiurl()+"/s/TOGGLE");
   }
 
   Dz.toggleVideo = function(videoNumber) {
     if (this.views.remote) {
       this.postMsg(this.views.remote, "TOGGLEVID "+videoNumber);
     }
-    this.get(this.apiurl+"/s/TOGGLEVID+"+videoNumber);
+    this.get(this.apiurl()+"/s/TOGGLEVID+"+videoNumber);
   }
 
   Dz.back = function() {
-    //this.get(this.apiurl+"/s/BACK"); //all of this is done is the CURSOR handler l.225
+    //this.get(this.apiurl()+"/s/BACK"); //all of this is done is the CURSOR handler l.225
     this.postMsg(this.views.present, "BACK");
   }
 

@@ -5,17 +5,19 @@ from flask import Response
 
 app = Flask(__name__,template_folder=".")
 
+apiurl = "http://192.168.1.120:5001"
+
 @app.route("/")
 def index():
-    return render_template('shells/mirror.html', url=url_for('view'))
+    return render_template('shells/mirror.html', url=url_for('view'), apiurl=apiurl)
 
 @app.route("/stage")
 def stage():
-    return render_template('shells/onstage.html', url=url_for('view'))
+    return render_template('shells/onstage.html', url=url_for('view'), apiurl=apiurl)
 
 @app.route("/phone")
 def phone():
-    return render_template('shells/phonestage.html', url=url_for('view'))
+    return render_template('shells/phonestage.html', url=url_for('view'), apiurl=apiurl)
 
 @app.route("/view")
 def view():

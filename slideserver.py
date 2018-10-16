@@ -83,7 +83,7 @@ def add_cors_headers(response):
 if __name__ == "__main__":
     app.debug = True
     app.after_request(add_cors_headers)
-    server = WSGIServer(("", 5001), app)
+    server = WSGIServer(("0.0.0.0", 5001), app)
     print("Server ready.. Serving..")
     server.serve_forever()
     # Then visit http://localhost:5001 to subscribe
