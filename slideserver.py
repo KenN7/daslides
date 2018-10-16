@@ -26,7 +26,7 @@ class ServerSentEvent(object):
         return val
 
 app = Flask(__name__)
-subscriptions = []
+subscriptions = []  #TODO remove global variables to allow multithreaded operations (redis ?)
 lastmessage = ""
 
 # Client code consumes like this.
