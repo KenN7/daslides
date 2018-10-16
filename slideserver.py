@@ -70,8 +70,8 @@ def subscribe():
 
 ###
 def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = 'http://127.0.0.1:5001'
-    response.headers['Access-Control-Allow-Origin'] = 'null' #for local operation
+    response.headers['Access-Control-Allow-Origin'] = 'http://127.0.0.1:5000'
+    #response.headers['Access-Control-Allow-Origin'] = 'null' #for local operation
     if request.method == 'OPTIONS':
         response.headers['Access-Control-Allow-Methods'] = 'DELETE, GET, POST, PUT'
         headers = request.headers.get('Access-Control-Request-Headers')
