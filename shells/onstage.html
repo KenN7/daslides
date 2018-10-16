@@ -162,7 +162,7 @@
 
   Dz.apiurl = function () {
       var u = "{{ apiurl }}";
-      if (u) {
+      if ( u != "" && !u.startsWith('{') ) {
           return u
       } else {
           return "http://127.0.0.1:5001"
@@ -265,7 +265,7 @@
 
   Dz.getUrl = function() {
     var u = "{{ url }}";
-    if (u) return u;
+    if (u != "" && !u.startsWith('{') ) return u;
     var u = window.location.hash.split("#")[1];
     if (!u) {
       u = window.prompt("What is the URL of the slides?");

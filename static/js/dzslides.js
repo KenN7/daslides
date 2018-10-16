@@ -334,6 +334,7 @@
 
   Dz.setIncremental = function(aStep) {
     this.step = aStep;
+    if (!this.slides[this.idx - 1]) return; //if no more slides return
     var incrementals = Array.prototype.slice.call(this.slides[this.idx - 1].$$('.next')).sort(function(a, b) {
             return Number(a.getAttribute('next-order')) - Number(b.getAttribute('next-order'));
           });
