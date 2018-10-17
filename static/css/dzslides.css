@@ -1,13 +1,27 @@
 
 
+  .abs {
+      position: absolute;
+  }
+
+  .spreadlist li {
+      margin-top:140px;
+  }
+
+
   .topandleft {
-    margin: 10px 75px 0 75px;
+    margin: 50px 75px 0 75px;
   }
 
   .centeredimg {
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  cite {
+      font-style: italic;
+      font-size: 1rem;
   }
 
   body{
@@ -56,20 +70,21 @@
   }
 
   h1 {
-    margin: 120px 0 30px 0;
+    margin: 160px 0 30px 0;
     text-align: center;
     font-size: 4rem;
     font-weight: 300;
   }
 
   h2 {
-    margin: 0px 0 30px 0;
+    margin: 0px 10px 30px 10px;
     text-align: center;
     font-weight: 300;
     font-size: 2rem;
   }
 
-  section > h3 {
+  /* section > h3 { */
+  h3 {
     margin: 50px 50px 40px 50px;
     border-bottom: 0.1px solid;
     font-weight: 300;
@@ -111,7 +126,7 @@
   }
 
   p {
-    margin: 75px 75px 0 75px;
+    margin: 50px 75px 0 75px;
     /* font-size: 3rem; */
   }
 
@@ -297,12 +312,14 @@
      **************************************
      Uncomment the following for 16:9 slides
      **************************************
+     Slides go from base 800*600 to 800*450 (for 16/10 go for height:500px;)
+     The .view section is for the multi slides view (ESC key mode)
+ */
 
-    html { font-size: 12px; }
+    /* html { font-size: 12px; }
     body { height: 450px; }
     .view section {
       height: 450px;
       margin: -140px -200px;
       transform: scale(.3);
-    }
-  */
+    } */
