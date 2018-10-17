@@ -79,7 +79,7 @@
     <div>
       <ul class="spreadlist">
         <li class="next">
-          Evolutionnary methods
+          Evolutionary methods
           <img src="static/images/icons/noun_873053_cc.png" class="abs" width="150" style="top: 31%; left: 70%;"  >
         </li>
         <li class="next">
@@ -159,11 +159,57 @@
 <section>
 
         <h3 class="title">
+          EvoCom
+      </h3>
+
+          <img src="static/images/bbhyp.png" class="abs" width="250" style="top: 33%; right: 6%; z-index:-1;"  >
+
+        <div class="next topandleft">
+            EvoCom is ?
+        </div>
+      <!-- end figure-->
+    <div role="note">Some notes. They are only visible using onstage shell.</div>
+</section>
+
+<section>
+
+        <h3 class="title">
+          Robot: E-puck
+      </h3>
+      <h3 >
+        Sensors
+    </h3>
+      <ul>
+          <li>Proximity</li>
+          <li>Light</li>
+          <li>Ground</li>
+          <li>Range and bearing</li>
+      </ul>
+      <h3>Actuators</h3>
+      <ul>
+          <li>Wheels</li>
+          <li>Range and bearing</li>
+      </ul>
+
+      <img src="static/images/logos/epuck-simu-transparent.png" class="abs" height="400px" style="top: 29%; right: 10%;" >
+
+      </div>
+      <!-- end figure-->
+    <div role="note">Some notes. They are only visible using onstage shell.</div>
+</section>
+
+<section>
+
+        <h3 class="title">
           Reference Model 1 and 2
       </h3>
 
+
       <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
+          <img src="static/images/reftab.png" width="650" class="centeredimg" alt="AutoMoDe" >
+      </div>
+      <p style="margin-top:20px;">Differences between reference models 1 and 2 are highlighted</p>
+
       </div>
       <!-- end figure-->
     <div role="note">Some notes. They are only visible using onstage shell.</div>
@@ -174,10 +220,54 @@
         <h3 class="title">
           Behavioral Modules
       </h3>
+        <table>
+          <thead>
+              <tr>
+                  <th>Behaviors</th>
+                  <th>Conditions</th>
+              </tr>
+          </thead>
+          <tr>
+              <td>Exploration</td>
+              <td>Black floor</td>
+          </tr>
+          <tr>
+              <td>Stop</td>
+              <td>Gray floor</td>
+          </tr>
+          <tr>
+              <td>Phototaxis</td>
+              <td>White floor</td>
+          </tr>
+          <tr>
+              <td>Anti-phototaxis</td>
+              <td>neighbor count</td>
+          </tr>
+          <tr>
+              <td>Attraction</td>
+              <td>Inverted neighbor count</td>
+          </tr>
+          <tr class="spaceUnder">
+              <td>Repulsion</td>
+              <td>Fixed probability</td>
+          </tr>
+          <tr>
+              <td><strong>Additonnal ones:</strong></td>
+              <td> </td>
+          </tr>
+         <tr>
+             <td>Attraction to message</td>
+             <td>Message count</td>
+         </tr>
+         <tr>
+             <td>Repulsion to message</td>
+             <td>Inverted message count</td>
+         </tr>
+           </table>
 
-      <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
-      </div>
+           <p>Two new conditions and two new behaviors</p>
+
+
       <!-- end figure-->
     <div role="note">Some notes. They are only visible using onstage shell.</div>
 </section>
@@ -185,53 +275,38 @@
 <section>
 
         <h3 class="title">
-          Task 1: Aggregation
+          Tasks
       </h3>
+          <div style="margin-left:auto; margin-right:auto; width:fit-content; display:flex;" class="spacebetween">
 
-      <p>All robots should aggregate on the white spot.</p>
+              <div class="">
 
-      <p>Objective function:<p>
-          <p></p>
+               <img src="static/images/aggreg.png" width="200" class="" alt="Aggregation" style="" >
+               <div class="">
+                   Aggregation
+               </div>
+              </div>
 
-      <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
-      </div>
-      <!-- end figure-->
-    <div role="note">Some notes. They are only visible using onstage shell.</div>
-</section>
+              <div class="">
 
-<section>
+               <img src="static/images/stop.png" width="200" class="" alt="Stop" style="" >
 
-        <h3 class="title">
-          Task 2: Stop
-      </h3>
+              <div class="">
+                  Stop
+              </div>
+              </div>
 
-      <p>All robots should stop when one of them finds the black spot.</p>
+              <div class="">
 
-      <p>Objective function:<p>
-          <p></p>
+               <img src="static/images/deci.png" width="200" class="" alt="Decision" style="" >
 
-      <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
-      </div>
-      <!-- end figure-->
-    <div role="note">Some notes. They are only visible using onstage shell.</div>
-</section>
 
-<section>
+             <div class="">
+                 Decision
+             </div>
+               </div>
+          </div>
 
-        <h3 class="title">
-          Task 3: Decision
-      </h3>
-
-      <p>Robots should go to the right or the left of the arena depending on the color of the center spot.</p>
-
-      <p>Objective function:<p>
-          <p></p>
-
-      <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
-      </div>
       <!-- end figure-->
     <div role="note">Some notes. They are only visible using onstage shell.</div>
 </section>
@@ -353,7 +428,6 @@
 
 <script src="static/plyr/plyr.js"></script>
 <script src="static/js/dzslides.js"></script>
-
 </body>
 </html>
 <!-- vim: set fdm=marker: }}} -->

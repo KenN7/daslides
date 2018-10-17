@@ -22,6 +22,10 @@
     margin-right: auto;
   }
 
+  div.spacebetween > div {
+      margin-right: 20px;
+  }
+
   cite {
       font-style: italic;
       font-size: 1rem;
@@ -135,8 +139,20 @@
 
   table {
     margin: auto;
-    font-size:2.5rem;
-    text-align: center;
+    font-size:2rem;
+    text-align: left;
+    border-collapse: collapse;
+  }
+
+  tr { border: none; }
+  td {
+    border-left: solid 1px black;
+    padding-right: 20px;
+    padding-left: 10px;
+  }
+
+  tr.spaceUnder td {
+      padding-bottom: 0.5em;
   }
 
   blockquote {
