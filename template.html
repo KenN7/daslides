@@ -13,7 +13,7 @@
 <body>
 <!-- Optional: on every page: header and footer -->
 <header>
-  AutoMoDe-gianduja
+  AutoMoDe-Gianduja
 </header>
 
 <footer><strong>Ken Hasselmann</strong>, Frédéric Robert, and Mauro Birattari</footer>
@@ -36,14 +36,15 @@
 <section>
     <h3 class="title">Robot swarms</h3>
     <ul>
-      <li class="next">Large number of robots cooperating
-      <li class="next">Self-organized
-      <li class="next">Decentralized
+      <li class="next">Large number of robots cooperating </li>
+      <li class="next">Self-organized </li>
+      <li class="next">Decentralized </li>
     </ul>
     <h3 class="next">In order to achieve</h3>
     <ul>
-        <li class="next"> Robustness
-        <li class="next"> Scalability
+        <li class="next"> Robustness </li>
+        <li class="next"> Scalability </li>
+        <li class="next"> Flexibility </li>
     </ul>
 
     <div role="note">Some notes.</div>
@@ -58,7 +59,7 @@
     Design done by hand by an expert.
       </li>
   </ul>
-  <img src="static/images/icons/crop_2.png" class="abs" width="150" style="top: 32%; left: 70%;" alt="manual" >
+  <img src="static/images/icons/crop_2.png" class="abs" width="150" style="top: 27%; left: 70%;" alt="manual" >
   </div>
   <div class="next">
       <h3>Automatic design</h3>
@@ -67,7 +68,7 @@
         Design automatically done by an optimization algorithm
       </li>
     </ul>
-    <img src="static/images/icons/crop_9.png" class="abs" width="150" style="top: 70%; left: 70%;" alt="auto" >
+    <img src="static/images/icons/crop_9.png" class="abs" width="150" style="top: 65%; left: 70%;" alt="auto" >
     </div>
     <div role="note">Some notes. They are only visible using onstage shell.</div>
 </section>
@@ -138,10 +139,10 @@
       <p> The automatic design process assigns a specific, task dependent
           <i>semantic</i> to a message.</p>
 
-          <img src="static/images/bbhyp.png" class="abs" width="250" style="top: 33%; right: 6%; z-index:-1;"  >
+          <img src="static/images/bbhyp.png" class="abs" width="250" style="top: 31%; right: 6%; z-index:-1;"  >
 
         <div class="next">
-          <h3 class="title">
+          <h3 class="title" style="margin-top:50px;">
             Idea
         </h3>
         <ul>
@@ -241,7 +242,7 @@
           </tr>
           <tr>
               <td>Anti-phototaxis</td>
-              <td>neighbor count</td>
+              <td>Neighbor count</td>
           </tr>
           <tr>
               <td>Attraction</td>
@@ -252,7 +253,7 @@
               <td>Fixed probability</td>
           </tr>
           <tr>
-              <td><strong>Additonnal ones:</strong></td>
+              <td><strong>Additonal ones:</strong></td>
               <td> </td>
           </tr>
          <tr>
@@ -318,12 +319,15 @@
       </h3>
 
       <h4>Assessment with a swarm of 20 e-puck robots:</h4>
-        <p>For each mission and each method optimization was run 15 times to obtain 15 instances of control software. Each run with 200 000 simulations</p>
-        <p>Each instance is evaluated once in simulation and once in reality</p>
+      <ul>
+          <li>For each mission and each method: 15 runs → 15 instances of control software.</li>
+          <li>Each run with 200 000 simulations.</li>
+          <li>Each instance is evaluated once in simulation and once in reality</li>
+      </ul>
 
-      <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
-      </div>
+          <img src="static/images/icons/croped_0.png" width="300" class="abs" style="top:65%; left:33%;" >
+          <img src="static/images/icons/crop_6.png" width="100" class="abs" style="top:67%; left:46%;">
+
       <!-- end figure-->
     <div role="note">Some notes. They are only visible using onstage shell.</div>
 </section>
@@ -332,12 +336,55 @@
 <section>
 
         <h3 class="title">
-          Results
+          Results aggregation
+      </h3>
+    <div class="">
+
+
+      <div class="topandleft">
+          <img src="static/images/resaggreg.png" width="250" style="margin-left:-25px;" >
+      </div>
+
+      <div style="width:240px; top:13%; right:32%;" class="abs">
+          <video class="js-player" src="static/videos/evocom-aggregation-011.mp4" loop ></video>
+      </div>
+      <div style="width:240px; top:13%; right:1%;" class="abs">
+          <video class="js-player" src="static/videos/gianduja-aggregation-012.mp4" loop ></video>
+      </div>
+      <div style="width:240px; top:54%; right:1%;" class="abs">
+          <video class="js-player" src="static/videos/chocolate-aggregation-004.mp4" loop ></video>
+      </div>
+      <div style="top:54%; right:32%;" class="text4vid">
+          All robots should aggregate on the white spot.
+      </div>
+      <!-- end figure-->
+
+    </div>
+    <div role="note">Some notes. They are only visible using onstage shell.</div>
+</section>
+
+<section>
+
+        <h3 class="title">
+          Results stop
       </h3>
 
 
       <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
+          <img src="static/images/resstop.png" width="250" style="margin-left:-25px;" >
+      </div>
+
+      <div style="width:240px; top:13%; right:32%;" class="abs">
+          <video class="js-player" src="static/videos/evocom-stop-011.mp4" loop ></video>
+      </div>
+      <div style="width:240px; top:13%; right:1%;" class="abs">
+          <video class="js-player" src="static/videos/gianduja-stop-005.mp4" loop ></video>
+      </div>
+      <div style="width:240px; top:54%; right:1%;" class="abs">
+          <video class="js-player" src="static/videos/chocolate-stop-011.mp4" loop ></video>
+      </div>
+      <div style="top:54%; right:32%;" class="text4vid">
+          All robots should stop when the white spot is found by any robot.
       </div>
       <!-- end figure-->
     <div role="note">Some notes. They are only visible using onstage shell.</div>
@@ -346,12 +393,25 @@
 <section>
 
         <h3 class="title">
-          Results
+          Results decision
       </h3>
 
 
       <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
+          <img src="static/images/resdeci.png" width="250" style="margin-left:-25px;" >
+      </div>
+
+      <div style="width:240px; top:13%; right:32%;" class="abs">
+          <video class="js-player" src="static/videos/evocom-decision-014.mp4" loop ></video>
+      </div>
+      <div style="width:240px; top:13%; right:1%;" class="abs">
+          <video class="js-player" src="static/videos/gianduja-decision-001.mp4" loop ></video>
+      </div>
+      <div style="width:240px; top:54%; right:1%;" class="abs">
+          <video class="js-player" src="static/videos/chocolate-decision-013.mp4" loop ></video>
+      </div>
+      <div style="top:54%; right:32%;" class="text4vid">
+          All robots should go either to the right or to the left side of arena based on center color.
       </div>
       <!-- end figure-->
     <div role="note">Some notes. They are only visible using onstage shell.</div>
@@ -360,66 +420,30 @@
 <section>
 
         <h3 class="title">
-          Results
+          Conclusions
       </h3>
+      <ul class="next">
+          <li>Meaningful semantics can be automatically defined per-mission by the design process.</li>
+          <li>Gianduja performs better than EvoCom.</li>
+          <li>Gianduja performs better than Chocolate in 2 out of 3 missions</li>
+      </ul>
+      <h3 class="title next">
+        Future work
+    </h3>
+    <ul class="next">
+        <li>Gianduja is more sensitive to noise than Chocolate.</li>
+        <li>We need to test on futher tasks.</li>
+        <li>Can we have more than one message ?</li>
+    </ul>
 
 
-      <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
-      </div>
       <!-- end figure-->
     <div role="note">Some notes. They are only visible using onstage shell.</div>
 </section>
 
 <section>
 
-        <h3 class="title">
-          Conclusion & future work
-      </h3>
 
-
-      <div class="topandleft">
-          <img src="static/images/" width="500" class="centeredimg" alt="AutoMoDe" >
-      </div>
-      <!-- end figure-->
-    <div role="note">Some notes. They are only visible using onstage shell.</div>
-</section>
-
-<section>
-    <div class="vidfull">
-
-    <div style="width:300px;">
-        <video class="js-player" src="http://videos.cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" ></video>
-    </div>
-    <div style="width:300px;">
-        <video class="js-player" src="http://videos.cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" ></video>
-    </div>
-    <div style="width:300px;">
-        <video class="js-player" src="http://videos.cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" ></video>
-    </div>
-
-
-    <div style="width:300px;">
-        <video class="js-player" src="http://videos.cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" ></video>
-    </div>
-    <div style="width:300px;">
-        <video class="js-player" src="http://videos.cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" ></video>
-    </div>
-    <div style="width:300px;">
-        <video class="js-player" src="http://videos.cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" ></video>
-    </div>
-
-    <div style="width:300px;">
-        <video class="js-player" src="http://videos.cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" ></video>
-    </div>
-    <div style="width:300px;">
-        <video class="js-player" src="http://videos.cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" ></video>
-    </div>
-    <div style="width:300px;">
-        <video class="js-player" src="http://videos.cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" ></video>
-    </div>
-
-    </div>
 
 </section>
 
