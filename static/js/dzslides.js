@@ -327,7 +327,7 @@
         next.scrollIntoView();
       } else {
         var videos = next.$$("video");
-        if (videos) {
+        if (videos && !!+this.params.autoplay) {
           $$.forEach(videos,
           function(v){
             v.play();
