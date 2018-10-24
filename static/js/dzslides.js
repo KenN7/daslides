@@ -211,13 +211,16 @@
   Dz.toggleContent = function() {
     var s = $("section[aria-selected]");
     if (s) {
-      var video = s.$("video");
-      if (video) {
-        if (video.ended || video.paused) {
-          video.play();
-        } else {
-          video.pause();
-        }
+      var videos = s.$$("video");
+      if (videos) {
+        $$.forEach(videos,
+        function(v){
+            if (v.ended || v.paused) {
+              v.play();
+            } else {
+              v.pause();
+            }
+        });
       }
     }
   }
@@ -310,9 +313,12 @@
     // If a Video is present in the previous slide, stop it.
     if (old) {
       old.removeAttribute("aria-selected");
-      var video = old.$("video");
-      if (video) {
-        video.pause();
+      var videos = old.$$("video");
+      if (videos) {
+        $$.forEach(videos,
+        function(v){
+          v.pause();
+        });
       }
     }
     if (next) {
@@ -320,9 +326,12 @@
       if (this.html.classList.contains("view")) {
         next.scrollIntoView();
       } else {
-        var video = next.$("video");
-        if (video && !!+this.params.autoplay) {
-          video.play();
+        var videos = next.$$("video");
+        if (videos) {
+          $$.forEach(videos,
+          function(v){
+            v.play();
+          });
         }
       }
     } else {

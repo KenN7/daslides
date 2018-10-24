@@ -5,7 +5,7 @@ from flask import Response
 
 app = Flask(__name__,template_folder=".")
 
-apiurl = "http://lorenz.ulb.ac.be:5001"
+apiurl = "http://127.0.0.1:5001"
 
 @app.route("/")
 def index():
