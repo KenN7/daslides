@@ -1,0 +1,43 @@
+ 
+\documentclass[tikz,border=10pt,convert={outext=.svg,command=\unexpanded{pdf2svg \infile\space\outfile}},multi=false]{standalone}
+
+\usepackage[utf8]{inputenc}
+\usepackage{xspace}
+
+%% Definitions
+\newcommand{\auto}{AutoMoDe\xspace}
+\newcommand{\cho}{\texttt{Choc\-o\-late}\xspace}
+\newcommand{\chocolate}{\auto-\cho}
+\newcommand{\van}{\texttt{Va\-nil\-la}\xspace}
+\newcommand{\vanilla}{\auto-\van}
+\newcommand{\evo}{\texttt{Evo\-Stick}\xspace}
+\newcommand{\evom}{\texttt{EvoCom}\xspace}
+\newcommand{\neat}{NEAT\xspace}
+\newcommand{\argos}{ARGoS\xspace}
+\newcommand{\epuck}{e-puck\xspace}
+\newcommand{\irace}{irace\xspace}
+\newcommand{\gian}{\texttt{Gianduja}\xspace}
+\newcommand{\gianduja}{\auto-\gian}
+
+\newcommand{\apriori}{a\,priori\xspace}
+\newcommand{\Apriori}{A\,priori\xspace}
+\newcommand{\etal}{et\,al.\xspace}
+
+\newcommand{\mao}[1]{\hl{\textbf{MAO:} #1}\xspace}
+
+\newcommand{\Magg}{\textsc{aggregation}\xspace}
+\newcommand{\Mstop}{\textsc{stop}\xspace}
+\newcommand{\Mdec}{\textsc{decision}\xspace}
+
+\newcommand{\Cagg}{\ensuremath{C_\textsc{a}}}
+\newcommand{\Cstop}{\ensuremath{C_\textsc{s}}}
+\newcommand{\Cdec}{\ensuremath{C_\textsc{d}}}
+
+\newcommand{\bfparagraph}[1]{\paragraph{\textbf{#1.}}\xspace}
+
+\newcommand{\RM}[1]{RM\,#1\xspace}
+\begin{document}
+
+\input{Friedman-tasks}
+
+\end{document}
