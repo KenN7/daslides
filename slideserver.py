@@ -11,6 +11,14 @@ from flask_cors import CORS
 
 import time
 
+def check_apikey(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if (request.headers.get('X-SLIDE-KEY', None) == '1234'):
+            return f(*args, **kwargs)
+        else:
+            return abort(401)
+    return wrapper
 
 # SSE "protocol" is described here: http://mzl.la/UPFyxY
 class ServerSentEvent(object):
@@ -33,9 +41,6 @@ subscriptions = []  #TODO remove global variables to allow multithreaded operati
 lastmessage = ""
 
 # Client code consumes like this.
-@app.route("/")
-def index():
-    return render_template('example.html')
 
 @app.route("/debug")
 def debug():
