@@ -80,7 +80,7 @@ def subscribe():
 if __name__ == "__main__":
     app.debug = True
     server = WSGIServer(("0.0.0.0", 5001), app)
-    print("Server ready.. Serving..")
+    print("Server ready.. Serving.. on port 5001")
     server.serve_forever()
     # Then visit http://localhost:5001 to subscribe
     # and send messages by visiting http://localhost:5001/s/action
