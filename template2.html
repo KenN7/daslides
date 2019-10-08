@@ -7,11 +7,14 @@
     <!-- Maybe a font from http://www.google.com/webfonts ? -->
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' >
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet" >
-    <link href='static/css/dzslides.css' rel='stylesheet' >
+    <link href='static/css/dzslides2.css' rel='stylesheet' >
 </head>
 
 <body>
 <!-- Optional: on every page: header and footer -->
+<div id="viewport">
+
+<div id="slides">
 <header>
   AutoMoDe-Gianduja
 </header>
@@ -234,7 +237,6 @@
 
       <img src="static/images/logos/realepuck.png" class="abs" height="400px" style="top: 29%; right: 10%;" >
 
-      </div>
       <!-- end figure-->
     <div role="note"> </div>
 </section>
@@ -384,15 +386,8 @@
           <img src="static/images/results/aggregres.svg" width="250" style="margin-left:-25px;" >
       </div>
 
-      <div style="width:240px; top:13%; right:32%;" class="abs">
-          <video class="js-player" src="static/videos/evocom-aggregation-011.mp4" loop ></video>
-      </div>
-      <div style="width:240px; top:13%; right:1%;" class="abs">
-          <video class="js-player" src="static/videos/gianduja-aggregation-012.mp4" loop ></video>
-      </div>
-      <div style="width:240px; top:54%; right:1%;" class="abs">
-          <video class="js-player" src="static/videos/chocolate-aggregation-004.mp4" loop ></video>
-      </div>
+
+      
       <div style="top:54%; right:32%;" class="text4vid">
           All robots should aggregate on the white spot.
       </div>
@@ -413,15 +408,7 @@
           <img src="static/images/results/stopres.svg" width="250" style="margin-left:-25px;" >
       </div>
 
-      <div style="width:240px; top:13%; right:32%;" class="abs">
-          <video class="js-player" src="static/videos/evocom-stop-011.mp4" loop ></video>
-      </div>
-      <div style="width:240px; top:13%; right:1%;" class="abs">
-          <video class="js-player" src="static/videos/gianduja-stop-005.mp4" loop ></video>
-      </div>
-      <div style="width:240px; top:54%; right:1%;" class="abs">
-          <video class="js-player" src="static/videos/chocolate-stop-011.mp4" loop ></video>
-      </div>
+
       <div style="top:54%; right:32%;" class="text4vid">
           All robots should stop when the white spot is found by any robot.
       </div>
@@ -439,21 +426,7 @@
           <img src="static/images/results/decisionres.svg" width="250" style="margin-left:-25px;" >
       </div>
 
-      <div style="width:240px; top:13%; right:32%;" class="abs">
-          <video class="js-player" loop >
-              <source src="static/videos/evocom-decision-009.mp4" type="video/mp4">
-          </video>
-      </div>
-      <div style="width:240px; top:13%; right:1%;" class="abs">
-          <video class="js-player" loop >
-              <source src="static/videos/gianduja-decision-001.mp4" type="video/mp4">
-          </video>
-      </div>
-      <div style="width:240px; top:54%; right:1%;" class="abs">
-          <video class="js-player" loop >
-              <source src="static/videos/chocolate-decision-013.mp4" type="video/mp4">
-          </video>
-      </div>
+
       <div style="top:54%; right:32%;" class="text4vid">
           All robots should go either to the right or to the left side of arena based on center color.
       </div>
@@ -497,8 +470,10 @@
 
 <div id="progress-bar"></div>
 
- <script src="static/plyr/plyr.js"></script> 
- <script src="static/js/daslidesES6.js"></script> 
+</div>
+</div>
+<!-- <script src="static/plyr/plyr.js"></script> -->
+ <script src="static/js/daslidesES6v2.js"></script>  
 </body>
 </html>
 <!-- vim: set fdm=marker: }}} -->

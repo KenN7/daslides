@@ -21,7 +21,7 @@ def phone():
 
 @app.route("/view")
 def view():
-    return render_template('template.html')
+    return render_template('comite.html')
 
 if __name__ == "__main__":
     app.debug = True

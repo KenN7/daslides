@@ -39,14 +39,14 @@
       font-size: 1rem;
   }
 
-  body{
+  #slides{
     font-weight: 300;
   }
 
-  html, .view body {
+  html, .view #slides {
       background-color: black; counter-reset: slideidx;
   }
-  body, .view section {
+  #slides, .view section {
     background-color: white; border-radius: 12px;
     font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
     /* font-family: 'Oswald', arial, serif; */
@@ -127,11 +127,7 @@
   }
 
   ul, ol {
-      margin: 20px 100px 0 100px;
-  }
-
-  ul > ul {
-      margin: 5px 100px 0 100px;
+      margin: 40px 100px 0 100px;
   }
 
   li > ul, ol {
@@ -145,12 +141,8 @@
   }
 
   p {
-    margin: 20px 75px 0 75px;
+    margin: 50px 75px 0 75px;
     /* font-size: 3rem; */
-  }
-
-  .small {
-    font-size: 1.5rem;
   }
 
   table {
@@ -267,13 +259,16 @@
     html {
       font-size: 14px;
     }
-    body {
+    .view {
+      height:100vw;
+      overflow: auto;
+    }
+    #slides {
       width: 800px; height: 600px;
       position: absolute; top: 50%; left: 50%;
       overflow: hidden;
-      display: none;
     }
-    .view body {
+    .view #slides {
       position: static;
       margin: 0;
       padding: 0;
@@ -339,7 +334,7 @@
       position: static;
       page-break-inside: avoid;
     }
-    body { overflow: visible; }
+    #slides { overflow: visible; }
     #progress-bar{ display:none; }
   }
 
